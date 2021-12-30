@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="Jump out of the comfort zone">
+  <meta name="author" content="Langery">
+  <meta name="keywords" content="">
+  <title>JavaScript笔记整理 ~ Langery Stone&#39;s Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Meditation space</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.png')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期三, 十一月 22日 2017, 4:29 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.5k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      6 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p><em>JavaSript学习笔记整理一</em><br><a id="more"></a></p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="eq"><a href="#eq" class="headerlink" title=":eq()"></a>:eq()</h3><p>&emsp;<code>:eq()</code>选择器选取带有指定index值的元素;index值从0开始,所有第一个元素的index值是0.</p>
+<pre><code class="javascript">    $(&quot;:eq(index)&quot;)
+</code></pre>
+<h3 id="insertRow"><a href="#insertRow" class="headerlink" title="insertRow()"></a>insertRow()</h3><p>&emsp;<code>insertRow()</code>方法用于在表格中的指定位置插入一个新行.</p>
+<pre><code class="javascript">    tableObject.insertRow(index)
+</code></pre>
+<h3 id="insertCell"><a href="#insertCell" class="headerlink" title="insertCell()"></a>insertCell()</h3><p>&emsp;<code>insertCell()</code>方法用于在HTML表的一行的指定位置插入一个空的<code>&lt;td&gt;</code>元素.</p>
+<pre><code>    tablerowObject.insertCell(index)
+</code></pre><h3 id="each"><a href="#each" class="headerlink" title="each()"></a>each()</h3><p>&emsp;输出每个 <code>li</code> 元素的文本.</p>
+<pre><code class="javascript">    $(&quot;button&quot;).click(function(){
+        $(&quot;li&quot;).each(function(){
+            alert($(this).text())
+        })
+    })
+</code></pre>
+<p>&emsp;each()方法规定为每个匹配元素规定运行的函数.</p>
+<pre><code class="javascript">    $(selector).each(function(index,element))
+</code></pre>
+<h3 id="prompt"><a href="#prompt" class="headerlink" title="prompt()"></a>prompt()</h3><p>&emsp;用于显示可提示用户进行输入的对话框.</p>
+<pre><code class="javascript">    prompt(text,defaultText)
+</code></pre>
+<h2 id="select标签"><a href="#select标签" class="headerlink" title="select标签"></a>select标签</h2><p>&emsp;<code>select</code> 元素可创建单选或多选菜单. <code>&lt;select&gt;</code> 元素中的 <code>&lt;option&gt;</code> 标签用于定义列表中的可用选项.</p>
+<pre><code class="bash">    &lt;select name=&quot;choice&quot; id=&quot;select&quot;&gt;
+        &lt;option value=&quot;1&quot;&gt;1&lt;/option&gt;
+        &lt;option value=&quot;2&quot;&gt;2&lt;/option&gt;
+        &lt;option value=&quot;3&quot;&gt;3&lt;/option&gt;
+    &lt;/select&gt;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">size</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">规定下拉列表中可见选项的数目</td>
+</tr>
+<tr>
+<td style="text-align:left">autofocus</td>
+<td style="text-align:left">autofocus</td>
+<td style="text-align:left">规定在页面加载后文本区域自动获取焦点</td>
+</tr>
+<tr>
+<td style="text-align:left">disabled</td>
+<td style="text-align:left">disabled</td>
+<td style="text-align:left">规定禁用该下拉列表</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h2><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>&emsp;sessionStorage是HTML5新增的一个回话存储对象,用于临时保存统一窗口(或标签页)的数据,在关闭窗口或标签页之后将会删除这些数据.<br>&emsp;sessionStorage允许访问一个sessionStorage对象.页面会话在浏览器打开期间一直保持,并且重新加载或恢复页面仍会保持原来的页面会话.在新标签或窗口打开一个页面会初始化一个新的会话.</p>
+<h3 id="客户端存储方式"><a href="#客户端存储方式" class="headerlink" title="客户端存储方式"></a>客户端存储方式</h3><p>&emsp;针对一个session的数据存储,该tab关掉就会消失.</p>
+<h3 id="操作方式"><a href="#操作方式" class="headerlink" title="操作方式"></a>操作方式</h3><p>1.setItem存储value</p>
+<pre><code class="javascript">    sessionStorage.setItem(&quot;key&quot;,&quot;value&quot;);
+</code></pre>
+<p>2.getItem获取value</p>
+<pre><code class="javascript">    var value = sessionStorage.getItem(&quot;key&quot;);
+</code></pre>
+<p>3.removeItem删除key</p>
+<pre><code class="javascript">    sessionStorage.removeItem(&quot;key&quot;);
+</code></pre>
+<p>4.clear清除所有的key/value</p>
+<pre><code class="javascript">    sessionStorage.clear();
+</code></pre>
+<h3 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h3><p><em>Text1</em>创建并访问一个sessionStroage:</p>
+<pre><code class="bash">    &lt;script type=&quot;text/javascript&quot;&gt;
+        sessionStorage.lastname = &quot;Tom&quot;;
+        document.write(sessionStorage.lastname);
+    &lt;/script&gt;
+</code></pre>
+<p><em>Text2</em>显示用户名</p>
+<pre><code class="bash">    &lt;body&gt;
+        &lt;span&gt;用户名：&lt;/span&gt;
+        &lt;span id=&quot;name&quot;&gt;&lt;/span&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            var name = document.getElementById(&#39;name&#39;);
+            var data = JSON.parse(sessionStorage[&quot;userInfo&quot;]);
+            name.html(data.su_userid);
+        &lt;/script&gt;
+    &lt;/body&gt;
+</code></pre>
+<h2 id="Input类型"><a href="#Input类型" class="headerlink" title="Input类型"></a>Input类型</h2><h3 id="number"><a href="#number" class="headerlink" title="number"></a>number</h3><pre><code class="javascript">    &lt;input type=&quot;number&quot; name=&quot;&quot; /&gt;
+</code></pre>
+<p>&emsp;请使用下面的属性来规定对数字类型的限定:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">max</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">规定允许的最大值</td>
+</tr>
+<tr>
+<td style="text-align:left">min</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">规定允许的最小值</td>
+</tr>
+<tr>
+<td style="text-align:left">step</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">规定合法数字间隔</td>
+</tr>
+<tr>
+<td style="text-align:left">value</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">规定默认值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Date-Pickers"><a href="#Date-Pickers" class="headerlink" title="Date Pickers"></a>Date Pickers</h3><pre><code>    &lt;input type=&quot;date&quot; name=&quot;&quot; /&gt;
+</code></pre><h2 id="function-生成器函数"><a href="#function-生成器函数" class="headerlink" title="function* (生成器函数)"></a>function* (生成器函数)</h2><p>&emsp;与普通函数的区别:</p>
+<ol>
+<li>通过new运算符或函数调用的形式调用生成器函数,均会返回一个生成器实例;</li>
+<li>通过new运算符或函数调用的形式调用生成器函数,均不会马上执行函数体的代码;</li>
+<li>必须调用生成器实例的next方法才会执行生成器函数体的代码.</li>
+</ol>
+<pre><code class="javascript">    function* name([param[, param[, ... param]]]) { statements }
+</code></pre>
+<blockquote>
+<p>语法</p>
+</blockquote>
+<ol>
+<li>name:函数名</li>
+<li>param:要传递给函数的一个参数名称,一个函数最多可以有255个参数</li>
+<li>statement:普通JS语句</li>
+</ol>
+<p><em>Text:</em></p>
+<pre><code class="javascript">    function *gen(){
+        yield 10;
+        y=yield &#39;foo&#39;;
+        yield y;
+    }
+
+    var obj=gen();
+    console.log(obj.next());// 执行 yield 10，返回 10
+    console.log(obj.next());// 执行 yield &#39;foo&#39;，返回 &#39;foo&#39;
+    console.log(obj.next(10));// 将 10 赋给上一条 yield &#39;foo&#39; 的左值，即执行 y=10，返回 10
+    console.log(obj.next());// 执行完毕，value 为 undefined，done 为 true
+</code></pre>
+<h2 id="splice"><a href="#splice" class="headerlink" title="splice"></a>splice</h2><h3 id="定义和方法"><a href="#定义和方法" class="headerlink" title="定义和方法"></a>定义和方法</h3><p>&emsp;splice()方法向/从数组中添加/删除项目，然后返回被删除的项目.<br>&emsp;该方法会改变原始数组.</p>
+<h2 id="setAttribute"><a href="#setAttribute" class="headerlink" title="setAttribute"></a>setAttribute</h2><h3 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h3><p>&emsp;setAttribute()方法添加指定的属性，并为其赋指定的值.如果这个指定的属性已存在，则仅设置/更改值.</p>
+<pre><code class="javascript">    element.setAttribute(attributename,attributevalue)
+</code></pre>
+<h2 id="循环语句-Loop-Statement"><a href="#循环语句-Loop-Statement" class="headerlink" title="循环语句(Loop Statement)"></a>循环语句(Loop Statement)</h2><h3 id="for-Statement"><a href="#for-Statement" class="headerlink" title="for Statement"></a>for Statement</h3><p>&emsp;for反复循环直到一个特定的条件计算为假.</p>
+<h3 id="do…while-Statement"><a href="#do…while-Statement" class="headerlink" title="do…while Statement"></a>do…while Statement</h3><p>&emsp;do…while反复直到一个特定条件计算为假.</p>
+<h3 id="while-Statement"><a href="#while-Statement" class="headerlink" title="while Statement"></a>while Statement</h3><p>&emsp;while 句只要指定的条件求值为真(true)就会一直执行它的语句块.</p>
+<h3 id="label-Statement"><a href="#label-Statement" class="headerlink" title="label Statement"></a>label Statement</h3><p>&emsp;<strong>标签语句</strong>提供一种在同一程序的另一处找到它的标识.<br>&emsp;<em>Text</em> 标记 markLoop 标识一个 while 循环</p>
+<pre><code class="javascript">    markLoop
+    while(theMark == true){
+        doSomething();
+    }
+</code></pre>
+<h3 id="break-Statement-中断语句"><a href="#break-Statement-中断语句" class="headerlink" title="break Statement(中断语句)"></a>break Statement(中断语句)</h3><p>&emsp;用于终止循环.<br>&emsp;<em>Text1</em></p>
+<pre><code class="javascript">    for (i = 0; i &lt; a.length; i++) {
+      if (a[i] == theValue) {
+        break;
+      }
+    }
+</code></pre>
+<p>&emsp;<em>Text2</em> 终止一个 label</p>
+<pre><code class="javascript">    var x = 0;
+    var z = 0
+    labelCancelLoops: while (true) {
+        console.log(&quot;外部循环: &quot; + x);
+        x += 1;
+        z = 1;
+        while (true) {
+            console.log(&quot;内部循环: &quot; + z);
+            z += 1;
+            if (z === 10 &amp;&amp; x === 10) {
+                break labelCancelLoops;
+            } else if (z === 10) {
+                break;
+            }
+        }
+    }
+</code></pre>
+<h3 id="continue-Statement-连续语句"><a href="#continue-Statement-连续语句" class="headerlink" title="continue Statement(连续语句)"></a>continue Statement(连续语句)</h3><p>&emsp;<em>Text1</em></p>
+<pre><code class="javascript">    var i = 0;
+    var n = 0;
+    while (i &lt; 5) {
+      i++;
+      if (i == 3) {
+        continue;
+      }
+      n += i;
+    }
+</code></pre>
+<h2 id="严格模式-知识点"><a href="#严格模式-知识点" class="headerlink" title="严格模式(知识点)"></a>严格模式(知识点)</h2><ul>
+<li>消除JavaScript语法的一些不合理、不严谨之处,减少一些怪异行为</li>
+<li>消除代码运行的一些不安全之处,保证代码运行的安全</li>
+<li>提高编译器效率,增加运行速度</li>
+<li>为未来新版本的JavaScript做好铺垫</li>
+</ul>
+<h2 id="堆栈"><a href="#堆栈" class="headerlink" title="堆栈"></a>堆栈</h2><h3 id="栈-stack"><a href="#栈-stack" class="headerlink" title="栈(stack)"></a>栈(stack)</h3><p>&emsp;先进后出(FILO);自动分配内存空间,由系统自动释放.</p>
+<h3 id="堆-heap"><a href="#堆-heap" class="headerlink" title="堆(heap)"></a>堆(heap)</h3><p>&emsp;先进先出(FIFO);动态分配内存,大小不定也不会自动释放.</p>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><h3 id="递归特点"><a href="#递归特点" class="headerlink" title="递归特点"></a>递归特点</h3><ul>
+<li>本质是函数中调用函数本身,容易造成栈溢出;</li>
+<li>要有结束条件,防止栈溢出;</li>
+<li>项目中尽量减少递归的使用,但是由于该思想比较容易解决问题,所以可以考虑在不好解决的问题中使用.</li>
+</ul>
+<h3 id="text"><a href="#text" class="headerlink" title="text"></a>text</h3><pre><code class="javascript">    function foo(i) {
+      if (i &lt; 0)
+        return;
+      console.log(&#39;begin:&#39; + i);
+      foo(i - 1);
+      console.log(&#39;end:&#39; + i);
+    }
+    foo(3);
+</code></pre>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E7%AC%94%E8%AE%B0">笔记</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Learning%20Notes">Learning Notes</a>
+                
+                  <a class="hover-with-bg" href="/tags/Informal%20Essay">Informal Essay</a>
+                
+                  <a class="hover-with-bg" href="/tags/JavaScript">JavaScript</a>
+                
+                  <a class="hover-with-bg" href="/tags/JQuery">JQuery</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === true;
+    var verify = 'false' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "AxIq9Cd88xSTWvFzURj7xWiz-MdYXbMMI",
+        app_key: "sDl2xm0ukXjRsVbIl4wN2ruM",
+        placeholder: "Just go go",
+        avatar: "retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" rel="nofollow noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "JavaScript笔记整理&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

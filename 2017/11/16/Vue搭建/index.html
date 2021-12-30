@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="Jump out of the comfort zone">
+  <meta name="author" content="Langery">
+  <meta name="keywords" content="">
+  <title>Vue环境搭建 ~ Langery Stone&#39;s Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Meditation space</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.png')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期四, 十一月 16日 2017, 2:53 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      5 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>&emsp;&emsp;<em>关于Vue环境的搭建</em><br><a id="more"></a></p>
+<h2 id="创建模板项目"><a href="#创建模板项目" class="headerlink" title="创建模板项目"></a>创建模板项目</h2><h3 id="安装vue脚手架"><a href="#安装vue脚手架" class="headerlink" title="安装vue脚手架"></a>安装vue脚手架</h3><pre><code class="javascript">    $ npm install -global vue-cli
+</code></pre>
+<h3 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h3><p>&emsp;&emsp;新建工作文件夹(如:Vue)</p>
+<pre><code class="bash">    $ cd Vue/
+    $ vue init webpack first-vue #&quot;first-vue&quot;为file name,可更改
+</code></pre>
+<p>&emsp;&emsp;使用webpack打包项目,输入项目名称、描述、作者、是否使用sass后即在目录下生成项目.</p>
+<h3 id="安装项目依赖"><a href="#安装项目依赖" class="headerlink" title="安装项目依赖"></a>安装项目依赖</h3><pre><code class="javascript">    $ cd first-vue
+    $ npm install
+</code></pre>
+<h3 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h3><pre><code class="javascript">    $ npm run dev
+</code></pre>
+<h3 id="发布项目"><a href="#发布项目" class="headerlink" title="发布项目"></a>发布项目</h3><pre><code class="javascript">    $ npm run build
+</code></pre>
+<p>&emsp;&emsp;当执行完此操作时,文件目录里生成dist文件夹和相关发布后的文件.</p>
+<h2 id="给项目添加组件"><a href="#给项目添加组件" class="headerlink" title="给项目添加组件"></a>给项目添加组件</h2><h3 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h3><p>&emsp;&emsp;在src目录下新建components目录,添加first-component.vue,template 写 html,script写 js,style写样式</p>
+<pre><code class="bash">    &lt;template&gt;
+    　　&lt;div id=&quot;firstcomponent&quot;&gt;
+    　　　　&lt;h1&gt;标题&lt;/h1&gt;
+    　　　　&lt;a&gt; 作者：{{ author }} &lt;/a&gt;
+    　　&lt;/div&gt;
+    &lt;/template&gt;
+
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    　　export default {
+    　　　　data () {
+    　　　　　　return {
+    　　　　　　　　author: &quot;Langery&quot;
+    　　　　　　}
+    　　　　}
+    　　}
+    &lt;/script&gt;
+
+    &lt;style&gt;
+    &lt;/style&gt;
+</code></pre>
+<h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p>&emsp;&emsp;打开App.vue,引入firstcomponent组件,并删除vue-cli脚手架生成的一些无意义html.在<code>&lt;script&gt;&lt;/script&gt;</code>标签内的第一行写</p>
+<pre><code class="javascript">    &lt;script type=&quot;text/javascript&quot;&gt;
+        import firstcomponent from &#39;./components/firstcomponent.vue&#39;
+    &lt;/script&gt;
+</code></pre>
+<h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><p>&emsp;&emsp;在<code>&lt;script&gt;&lt;/script&gt;</code>标签内的<code>data</code>代码块后面加上 <code>components: { firstcomponent }</code>.记得中间加英文逗号</p>
+<pre><code class="javascript">    export default {
+    　　name: &#39;app&#39;,
+    　　data () {
+    　　　　return {
+    　　　　　　msg: &#39;Welcome to Your Vue.js App&#39;
+    　　　　}
+    　　},
+    　　components: { firstcomponent }
+    }
+</code></pre>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>&emsp;&emsp;在<code>&lt;template&gt;&lt;/template&gt;</code>内加上<code>&lt;firstcomponent&gt;&lt;/firstcomponent&gt;</code></p>
+<pre><code class="html">    &lt;template&gt;
+    　　&lt;div id=&quot;app&quot;&gt;
+    　　　　&lt;img src=&quot;./assets/logo.png&quot;&gt;
+    　　　　&lt;h2&gt;{{msg}}&lt;/h2&gt;
+    　　　　&lt;firstcomponent&gt;&lt;/firstcomponent&gt;
+    　　&lt;/div&gt;
+    &lt;/template&gt;
+</code></pre>
+<h2 id="添加路由功能"><a href="#添加路由功能" class="headerlink" title="添加路由功能"></a>添加路由功能</h2><h3 id="终端安装vue-router"><a href="#终端安装vue-router" class="headerlink" title="终端安装vue-router"></a>终端安装vue-router</h3><pre><code class="javascript">    $ cnpm install vue-router --save
+</code></pre>
+<h3 id="src下添加views目录和页面文件"><a href="#src下添加views目录和页面文件" class="headerlink" title="src下添加views目录和页面文件"></a>src下添加views目录和页面文件</h3><p>&emsp;&emsp;在目录下面新建两个文件,view1.vue和view2.vue</p>
+<pre><code class="bash">    &lt;template&gt;
+        &lt;div &gt;
+            &lt;h1&gt;我是View1&lt;/h1&gt;
+            &lt;a&gt; 我是View1 &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        export default {
+            name: &#39;view1&#39;,
+        }
+    &lt;/script&gt;
+
+    &lt;style&gt;
+    &lt;/style&gt;
+</code></pre>
+<pre><code class="bash">    &lt;template&gt;
+        &lt;div &gt;
+            &lt;h1&gt;我是View2&lt;/h1&gt;
+            &lt;a&gt; 我是View2&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        export default {
+            name: &#39;view2&#39;,
+        }
+    &lt;/script&gt;
+
+    &lt;style&gt;
+    &lt;/style&gt;    
+</code></pre>
+<h3 id="引入并注册vue-router"><a href="#引入并注册vue-router" class="headerlink" title="引入并注册vue-router"></a>引入并注册vue-router</h3><p>&emsp;&emsp;添加router.js文件,这里添加了两个路由,分别指向view1和view2.</p>
+<pre><code class="javascript">    import Vue from &#39;vue&#39;
+    import Router from &#39;vue-router&#39;
+    import View1 from &#39;./views/view1.vue&#39;
+    import View2 from &#39;./views/view2.vue&#39;
+
+    Vue.use(Router)
+
+    export default new Router({
+        linkActiveClass: &#39;active&#39;,
+        // 路由配置
+        routes: [
+            {
+                path: &#39;/view1&#39;,
+                component: View1
+            }, {
+                path: &#39;/view2&#39;,
+                component: View2
+            }, {
+                path: &#39;/*&#39;,
+                component: View1
+            }
+        ]
+    })
+</code></pre>
+<h3 id="使用router"><a href="#使用router" class="headerlink" title="使用router"></a>使用router</h3><p>&emsp;&emsp;修改main.js,引入<code>router</code>并指定当前vue实例</p>
+<pre><code class="javascript">    import Vue from &#39;vue&#39;
+    import App from &#39;./App.vue&#39;
+    import router from &#39;./router.js&#39;
+
+    new Vue({
+        el: &#39;#app&#39;,
+        router,
+        render: h =&gt; h(App)
+    })
+</code></pre>
+<h3 id="添加路由链接和出口"><a href="#添加路由链接和出口" class="headerlink" title="添加路由链接和出口"></a>添加路由链接和出口</h3><p>&emsp;&emsp;修改App.vue,添加链接和出口.</p>
+<pre><code class="html">    &lt;template&gt;
+    　　&lt;div id=&quot;app&quot;&gt;
+    　　　　&lt;img src=&quot;./assets/logo.png&quot;&gt;
+    　　　　&lt;h2&gt;{{msg}}&lt;/h2&gt;
+    　　　　&lt;first-component&gt;&lt;/first-component&gt;
+            &lt;br&gt;
+            &lt;router-link to=&quot;/view1&quot;&gt;Go to view1&lt;/router-link&gt;
+            &lt;router-link to=&quot;/view2&quot;&gt;Go to view2&lt;/router-link&gt;
+            &lt;!-- 路由出口 --&gt;
+            &lt;!-- 路由匹配到的组件将渲染在这里 --&gt;
+            &lt;router-view&gt;&lt;/router-view&gt;
+    　　&lt;/div&gt;
+    &lt;/template&gt;
+</code></pre>
+<h2 id="使用axios请求数据"><a href="#使用axios请求数据" class="headerlink" title="使用axios请求数据"></a>使用axios请求数据</h2><h3 id="终端安装axios"><a href="#终端安装axios" class="headerlink" title="终端安装axios"></a>终端安装axios</h3><pre><code class="javascript">    cnpm install axios --save
+</code></pre>
+<h3 id="引入axios"><a href="#引入axios" class="headerlink" title="引入axios"></a>引入axios</h3><p>&emsp;&emsp;修改main.js文件,添加<code>Vue.prototype.$ajax = axios</code>,引入axios.</p>
+<pre><code class="javascript">    import Vue from &#39;vue&#39;
+    import axios from &#39;axios&#39;
+    import App from &#39;./App.vue&#39;
+    import router from &#39;./router.js&#39;
+
+    Vue.prototype.$ajax = axios
+
+    new Vue({
+        el: &#39;#app&#39;,
+        router,
+        render: h =&gt; h(App)
+    })
+</code></pre>
+<h3 id="在视图中请求数据"><a href="#在视图中请求数据" class="headerlink" title="在视图中请求数据"></a>在视图中请求数据</h3><p>&emsp;&emsp;修改view1.vue的js,引入axios,请求服务器数据.</p>
+<pre><code class="javascript">    &lt;script type=&quot;text/javascript&quot;&gt;
+    import axios from &#39;axios&#39;
+
+    export default {
+        name: &#39;view1&#39;,
+        mounted: function() {
+            axios.post(&#39;/jhb/getslides&#39;)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (response) {
+                console.log(response);
+            });
+        }
+    }
+    &lt;/script&gt;  
+</code></pre>
+<h2 id="Vue项目打包"><a href="#Vue项目打包" class="headerlink" title="Vue项目打包"></a>Vue项目打包</h2><p>&emsp;&emsp;修改<code>config/index.js</code>里的<code>assetsPublicPath</code>字段,将初始项目中的根目录<code>/</code>改为<code>./</code></p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E7%AC%94%E8%AE%B0">笔记</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Learning%20Notes">Learning Notes</a>
+                
+                  <a class="hover-with-bg" href="/tags/Informal%20essay">Informal essay</a>
+                
+                  <a class="hover-with-bg" href="/tags/Environmental%20deployment">Environmental deployment</a>
+                
+                  <a class="hover-with-bg" href="/tags/vue">vue</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === true;
+    var verify = 'false' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "AxIq9Cd88xSTWvFzURj7xWiz-MdYXbMMI",
+        app_key: "sDl2xm0ukXjRsVbIl4wN2ruM",
+        placeholder: "Just go go",
+        avatar: "retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" rel="nofollow noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Vue环境搭建&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

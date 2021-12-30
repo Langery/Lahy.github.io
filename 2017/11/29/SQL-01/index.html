@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="Jump out of the comfort zone">
+  <meta name="author" content="Langery">
+  <meta name="keywords" content="">
+  <title>SQL学习笔记(一)————基础语法 ~ Langery Stone&#39;s Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Meditation space</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.png')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期三, 十一月 29日 2017, 1:51 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    877 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      4 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p><em>关于SQL学习笔记整理</em><br><a id="more"></a></p>
+<h2 id="三大数据类型"><a href="#三大数据类型" class="headerlink" title="三大数据类型"></a>三大数据类型</h2><h3 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h3><ul>
+<li>整数: tinyint、smallint、mediumint、int、bigint</li>
+<li>浮点数: float、double、real、decimal</li>
+</ul>
+<h3 id="日期和时间"><a href="#日期和时间" class="headerlink" title="日期和时间"></a>日期和时间</h3><p>&emsp;&ensp;date、time、datetime、timestamp、year</p>
+<h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><ul>
+<li>字符串: char、varchar</li>
+<li>文本: tinytext、text、mediumtext、longtext</li>
+<li>二进制: tinyblob、blob、mediumblob、longblob</li>
+</ul>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><ul>
+<li>SQL指结构化查询语言</li>
+<li>SQL使我们有能力访问数据库</li>
+<li>SQL是一种ANSI的标准计算机语言</li>
+</ul>
+<h2 id="SQL语法"><a href="#SQL语法" class="headerlink" title="SQL语法"></a>SQL语法</h2><p><strong>注:SQL对大小写不敏感!!!</strong></p>
+<h3 id="DML-数据操作语言"><a href="#DML-数据操作语言" class="headerlink" title="DML(数据操作语言)"></a>DML(数据操作语言)</h3><p>&emsp;&ensp;查询和更新指令</p>
+<ul>
+<li>SELECT-从数据库表中获取数据</li>
+<li>UPDATE-更新数据库表中的数据</li>
+<li>DELETE-从数据库表中删除数据</li>
+<li>INSERT INTO-从数据库表中插入数据</li>
+</ul>
+<h3 id="DDL-数据定义语言"><a href="#DDL-数据定义语言" class="headerlink" title="DDL(数据定义语言)"></a>DDL(数据定义语言)</h3><p>&emsp;&ensp;创建和删除指令</p>
+<ul>
+<li>CREATE DATABASE-创建新数据库</li>
+<li>ALTER DATABASE-修改数据库</li>
+<li>CREATE TABLE-创建新表</li>
+<li>ALTER TABLE-变更(改变)数据库表</li>
+<li>DROP TABLE-删除表</li>
+<li>CREATE INDEX-创建索引(搜索键)</li>
+<li>DROP INDEX-删除索引</li>
+</ul>
+<h2 id="SQL语句"><a href="#SQL语句" class="headerlink" title="SQL语句"></a>SQL语句</h2><hr>
+<h3 id="SELECT语句"><a href="#SELECT语句" class="headerlink" title="SELECT语句"></a>SELECT语句</h3><p>&emsp;&ensp;用于从表中选取数据.星号(<code>*</code>)是选取所有列的快捷方式.</p>
+<pre><code class="sql">    SELECT 列名称 FROM 表名称
+    SELECT * FROM 表名称
+</code></pre>
+<p>&emsp;<em>Text:</em> Persons表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Id</th>
+<th style="text-align:left">LastName</th>
+<th style="text-align:left">FirstName</th>
+<th style="text-align:left">Address</th>
+<th style="text-align:left">City</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Adams</td>
+<td style="text-align:left">John</td>
+<td style="text-align:left">Oxford Street</td>
+<td style="text-align:left">London</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Bush</td>
+<td style="text-align:left">George</td>
+<td style="text-align:left">Fifth Avenue</td>
+<td style="text-align:left">New York</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">arter</td>
+<td style="text-align:left">Thomas</td>
+<td style="text-align:left">Changan Street</td>
+<td style="text-align:left">Beijing</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="sql">    SELECT LastName,FirstName FROM Persons
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">LastName</th>
+<th style="text-align:left">FirstName</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Adams</td>
+<td style="text-align:left">John</td>
+</tr>
+<tr>
+<td style="text-align:left">Bush</td>
+<td style="text-align:left">George</td>
+</tr>
+<tr>
+<td style="text-align:left">arter</td>
+<td style="text-align:left">Thomas</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="DISTINCT语句"><a href="#DISTINCT语句" class="headerlink" title="DISTINCT语句"></a>DISTINCT语句</h3><p>&emsp;&ensp;用于列出不同的值.</p>
+<pre><code class="sql">    SELECT DISTINCT 列名称 FROM 表名称
+</code></pre>
+<p>&emsp;<em>Text:</em> Orders表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Company</th>
+<th style="text-align:left">OrderNumber</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">IBM</td>
+<td style="text-align:left">2589</td>
+</tr>
+<tr>
+<td style="text-align:left">Window</td>
+<td style="text-align:left">1265</td>
+</tr>
+<tr>
+<td style="text-align:left">Apple</td>
+<td style="text-align:left">7841</td>
+</tr>
+<tr>
+<td style="text-align:left">Window</td>
+<td style="text-align:left">4765</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="sql">    SELECT Company FROM Orders
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Company</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">IBM</td>
+</tr>
+<tr>
+<td style="text-align:center">Window</td>
+</tr>
+<tr>
+<td style="text-align:center">Apple</td>
+</tr>
+<tr>
+<td style="text-align:center">Window</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="sql">    SELECT DISTINCT Company FROM Orders
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Company</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">IBM</td>
+</tr>
+<tr>
+<td style="text-align:center">Window</td>
+</tr>
+<tr>
+<td style="text-align:center">Apple</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="WHERE语句"><a href="#WHERE语句" class="headerlink" title="WHERE语句"></a>WHERE语句</h3><p>&emsp;如需有条件地从表中选取数据,可将 WHERE 子句添加到 SELECT 语句.</p>
+<pre><code class="sql">    SELECT 列名称 FROM 表名称 WHERE 列 运算符 值
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">操作符</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">=</td>
+<td style="text-align:left">等于</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;&gt;</td>
+<td style="text-align:left">不等于</td>
+</tr>
+<tr>
+<td style="text-align:left">!=</td>
+<td style="text-align:left">不等于</td>
+</tr>
+<tr>
+<td style="text-align:left">&gt;</td>
+<td style="text-align:left">大于</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;</td>
+<td style="text-align:left">小于</td>
+</tr>
+<tr>
+<td style="text-align:left">&gt;=</td>
+<td style="text-align:left">大于等于</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;=</td>
+<td style="text-align:left">小于等于</td>
+</tr>
+<tr>
+<td style="text-align:left">BETWEEB</td>
+<td style="text-align:left">在某个范围内</td>
+</tr>
+<tr>
+<td style="text-align:left">LIKE</td>
+<td style="text-align:left">搜索某种模式</td>
+</tr>
+</tbody>
+</table>
+<p>&emsp;<em>Text:</em> Persons表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">LastName</th>
+<th style="text-align:left">FirstName</th>
+<th style="text-align:left">Address</th>
+<th style="text-align:left">City</th>
+<th style="text-align:left">Year</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Adams</td>
+<td style="text-align:left">John</td>
+<td style="text-align:left">Oxford Street</td>
+<td style="text-align:left">London</td>
+<td style="text-align:left">1970</td>
+</tr>
+<tr>
+<td style="text-align:left">Bush</td>
+<td style="text-align:left">George</td>
+<td style="text-align:left">Fifth Avenue</td>
+<td style="text-align:left">New York</td>
+<td style="text-align:left">1975</td>
+</tr>
+<tr>
+<td style="text-align:left">Arter</td>
+<td style="text-align:left">Thomas</td>
+<td style="text-align:left">Changan Street</td>
+<td style="text-align:left">Beijing</td>
+<td style="text-align:left">1980</td>
+</tr>
+<tr>
+<td style="text-align:left">Gates</td>
+<td style="text-align:left">Bill</td>
+<td style="text-align:left">Xuanwumen 10</td>
+<td style="text-align:left">Beijing</td>
+<td style="text-align:left">1985</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="sql">    SELECT * FROM Persons WHERE City=&#39;Beijing&#39;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">LastName</th>
+<th style="text-align:left">FirstName</th>
+<th style="text-align:left">Address</th>
+<th style="text-align:left">City</th>
+<th style="text-align:left">Year</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Arter</td>
+<td style="text-align:left">Thomas</td>
+<td style="text-align:left">Changan Street</td>
+<td style="text-align:left">Beijing</td>
+<td style="text-align:left">1980</td>
+</tr>
+<tr>
+<td style="text-align:left">Gates</td>
+<td style="text-align:left">Bill</td>
+<td style="text-align:left">Xuanwumen 10</td>
+<td style="text-align:left">Beijing</td>
+<td style="text-align:left">1985</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="LIKE操作符"><a href="#LIKE操作符" class="headerlink" title="LIKE操作符"></a>LIKE操作符</h3><p>&emsp;LIKE 操作符用于在 WHERE 子句中搜索列中的指定模式.</p>
+<pre><code class="sql">    SELECT column_name(s)
+    FROM table_name
+    WHERE column_name LIKE pattern
+</code></pre>
+<p><em>Persons表</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Id</th>
+<th style="text-align:left">LastName</th>
+<th style="text-align:left">FirstName</th>
+<th style="text-align:left">Address</th>
+<th style="text-align:left">City</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Adams</td>
+<td style="text-align:left">John</td>
+<td style="text-align:left">Oxford Street</td>
+<td style="text-align:left">London</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Bush</td>
+<td style="text-align:left">George</td>
+<td style="text-align:left">Fifth Avenue</td>
+<td style="text-align:left">New York</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">Arter</td>
+<td style="text-align:left">Thomas</td>
+<td style="text-align:left">Changan Street</td>
+<td style="text-align:left">Beijing</td>
+</tr>
+</tbody>
+</table>
+<p>&emsp;<em>Text1:</em> (以…开头)</p>
+<pre><code class="sql">    SELECT * FROM Persons
+    WHERE City LIKE &#39;N%&#39;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Id</th>
+<th style="text-align:left">LastName</th>
+<th style="text-align:left">FirstName</th>
+<th style="text-align:left">Address</th>
+<th style="text-align:left">City</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Bush</td>
+<td style="text-align:left">George</td>
+<td style="text-align:left">Fifth Avenue</td>
+<td style="text-align:left">New York</td>
+</tr>
+</tbody>
+</table>
+<p><em>提示:</em>‘%’ 可用于定义通配符(模式中缺少的字母).<br>&emsp;<em>Text2:</em>(以…结尾)</p>
+<pre><code class="sql">    SELECT * FROM Persons
+    WHERE City LIKE &#39;%g&#39;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Id</th>
+<th style="text-align:left">LastName</th>
+<th style="text-align:left">FirstName</th>
+<th style="text-align:left">Address</th>
+<th style="text-align:left">City</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">Arter</td>
+<td style="text-align:left">Thomas</td>
+<td style="text-align:left">Changan Street</td>
+<td style="text-align:left">Beijing</td>
+</tr>
+</tbody>
+</table>
+<p>&emsp;<em>Text3:</em>(包含…)</p>
+<pre><code class="sql">    SELECT * FROM Persons
+    WHERE City LIKE &#39;%lon%&#39;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Id</th>
+<th style="text-align:left">LastName</th>
+<th style="text-align:left">FirstName</th>
+<th style="text-align:left">Address</th>
+<th style="text-align:left">City</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Adams</td>
+<td style="text-align:left">John</td>
+<td style="text-align:left">Oxford Street</td>
+<td style="text-align:left">London</td>
+</tr>
+</tbody>
+</table>
+<p>&emsp;<em>Text4:</em></p>
+<pre><code class="sql">    SELECT * FROM Persons
+    WHERE City NOT LIKE &#39;%lon%&#39;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Id</th>
+<th style="text-align:left">LastName</th>
+<th style="text-align:left">FirstName</th>
+<th style="text-align:left">Address</th>
+<th style="text-align:left">City</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Bush</td>
+<td style="text-align:left">George</td>
+<td style="text-align:left">Fifth Avenue</td>
+<td style="text-align:left">New York</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">arter</td>
+<td style="text-align:left">Thomas</td>
+<td style="text-align:left">Changan Street</td>
+<td style="text-align:left">Beijing</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="BETWEEN操作符"><a href="#BETWEEN操作符" class="headerlink" title="BETWEEN操作符"></a>BETWEEN操作符</h3><p>&emsp;在WHERE子句中使用,作用是选取介于两个值之间的数据范围.</p>
+<pre><code class="sql">    SELECT column_name(s)
+    FROM table_name
+    WHERE column_name
+    BETWEEN value1 AND value2
+</code></pre>
+<p><em>Person表</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Id</th>
+<th style="text-align:left">LastName</th>
+<th style="text-align:left">FirstName</th>
+<th style="text-align:left">Address</th>
+<th style="text-align:left">City</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Adams</td>
+<td style="text-align:left">John</td>
+<td style="text-align:left">Oxford Street</td>
+<td style="text-align:left">London</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Bush</td>
+<td style="text-align:left">George</td>
+<td style="text-align:left">Fifth Avenue</td>
+<td style="text-align:left">New York</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">Carter</td>
+<td style="text-align:left">Thomas</td>
+<td style="text-align:left">Changan Street</td>
+<td style="text-align:left">Beijing</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">Gates</td>
+<td style="text-align:left">Bill</td>
+<td style="text-align:left">Xuanwumen 10</td>
+<td style="text-align:left">Beijing</td>
+</tr>
+</tbody>
+</table>
+<p>&emsp;<em>Text1:</em></p>
+<pre><code class="sql">    SELECT * FROM Persons
+    WHERE LastName
+    BETWEEN &#39;Adams&#39; AND &#39;Carter&#39;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Id</th>
+<th style="text-align:left">LastName</th>
+<th style="text-align:left">FirstName</th>
+<th style="text-align:left">Address</th>
+<th style="text-align:left">City</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Adams</td>
+<td style="text-align:left">John</td>
+<td style="text-align:left">Oxford Street</td>
+<td style="text-align:left">London</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Bush</td>
+<td style="text-align:left">George</td>
+<td style="text-align:left">Fifth Avenue</td>
+<td style="text-align:left">New York</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h2><p>&emsp;StringBuilder是一个可变的字符序列.<br>&emsp;StringBuilder使用</p>
+<pre><code class="sql">    StringBuilder strSql = new StringBuilder();
+</code></pre>
+<h3 id="常用方法-Append"><a href="#常用方法-Append" class="headerlink" title="常用方法(Append)"></a>常用方法(Append)</h3><p>&emsp;Append方法：将文本或对象的字符串表示形式添加到由当前StringBuilder对象表示的字符串的结尾处.</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E7%AC%94%E8%AE%B0">笔记</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Learning%20Notes">Learning Notes</a>
+                
+                  <a class="hover-with-bg" href="/tags/Informal%20Essay">Informal Essay</a>
+                
+                  <a class="hover-with-bg" href="/tags/SQL%20Notes">SQL Notes</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === true;
+    var verify = 'false' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "AxIq9Cd88xSTWvFzURj7xWiz-MdYXbMMI",
+        app_key: "sDl2xm0ukXjRsVbIl4wN2ruM",
+        placeholder: "Just go go",
+        avatar: "retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" rel="nofollow noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "SQL学习笔记(一)————基础语法&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>
