@@ -14,7 +14,7 @@
   <meta name="description" content="Jump out of the comfort zone">
   <meta name="author" content="Langery">
   <meta name="keywords" content="">
-  <title>SQL学习笔记(一)————基础语法 ~ Langery Stone&#39;s Blog</title>
+  <title>SQL学习笔记 ~ Langery Stone&#39;s Blog</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
@@ -95,7 +95,7 @@
 </nav>
 
     <div class="view intro-2" id="background"
-         style="background: url('/img/default.png')no-repeat center center;
+         style="background: url('/img/sea.jpg')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -119,7 +119,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    877 字
+                    1.6k 字
                   </span>&nbsp;
                 
 
@@ -127,7 +127,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      4 分钟
+                      6 分钟
                   </span>&nbsp;
                 
 
@@ -161,30 +161,84 @@
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
             <p><em>关于SQL学习笔记整理</em><br><a id="more"></a></p>
-<h2 id="三大数据类型"><a href="#三大数据类型" class="headerlink" title="三大数据类型"></a>三大数据类型</h2><h3 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h3><ul>
+<h2 id="逻辑结构"><a href="#逻辑结构" class="headerlink" title="逻辑结构"></a>逻辑结构</h2><h3 id="数据视图、数据模型"><a href="#数据视图、数据模型" class="headerlink" title="数据视图、数据模型"></a>数据视图、数据模型</h3><p>&emsp;数据抽象共有三个层次:物理层、逻辑层和视图层.<br>&emsp;数据模型通常由数据结构、数据操作和完整性约束三部分组成.</p>
+<h3 id="数据库模式"><a href="#数据库模式" class="headerlink" title="数据库模式"></a>数据库模式</h3><ul>
+<li>物理模式(内模式):在物理层描述数据库中全体存储结构和存取方法;</li>
+<li>逻辑模式(概念模式):在逻辑层描述数据库中全体数据的逻辑结构和特征;</li>
+<li>子模式(外模式):描述数据库用户能够看见和使用的局部数据的逻辑结构和特征.</li>
+</ul>
+<p>&emsp;通常一个数据库只有一个物理模式和一个逻辑模式,但是子模式有若干个.</p>
+<h3 id="关系模型"><a href="#关系模型" class="headerlink" title="关系模型"></a>关系模型</h3><p>&emsp;关系模型由<strong>关系数据结构</strong>、<strong>关系操作集合</strong>和<strong>关系完整性约束</strong>三部分构成.</p>
+<p>&emsp;关系操作的特点是集合操作方式,即操作的对象和结果都是集合.关系操作可以使用两种方式定义:基于代数的定义为<strong>关系代数</strong>;基于逻辑的定义为<strong>关系演算</strong>.由于使用变量的不同,关系演算又分为<strong>元组关系演算</strong>和<strong>域关系演算</strong>.</p>
+<p>&emsp;关系模型允许定义三类完整性约束:<strong>实体完整性、参照完整性和用户定义完整性</strong>.其中<strong>实体完整性和参照完整性</strong>是关系模型必须满足的完整性约束条件.<strong>实体完整性规则是:关系的主码不能取空值.参照完整性规则是:外码必须是另一个表中主码的有效值,或者是”空值”</strong>.</p>
+<h3 id="视图和表"><a href="#视图和表" class="headerlink" title="视图和表"></a>视图和表</h3><p>&emsp;数据库汇总的数据都会存储在表中的,而视图只是一个或多个表依照某个条件组合而成的结构集.视图只能进行select操作.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">表</th>
+<th style="text-align:left">视图</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">存在形式</td>
+<td style="text-align:left">物理存在</td>
+<td style="text-align:left">虚拟内存表</td>
+</tr>
+<tr>
+<td style="text-align:left">存在模式</td>
+<td style="text-align:left">内模式</td>
+<td style="text-align:left">外模式</td>
+</tr>
+<tr>
+<td style="text-align:left">属性</td>
+<td style="text-align:left">内容</td>
+<td style="text-align:left">窗口</td>
+</tr>
+<tr>
+<td style="text-align:left">编译sql语句</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">否</td>
+</tr>
+<tr>
+<td style="text-align:left">实际物理内容</td>
+<td style="text-align:left">有</td>
+<td style="text-align:left">无</td>
+</tr>
+<tr>
+<td style="text-align:left">存在模式</td>
+<td style="text-align:left">全局模式</td>
+<td style="text-align:left">局部模式</td>
+</tr>
+</tbody>
+</table>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><p>&emsp;事务是一系列的数据库才做,是数据库应用程序的基本单元,是反应现实世界需要以完整单位提交的一项工作.事务是用户定义的一个数据库操作序列.<br>&emsp;事务的四个特征:<strong>原子性、一致性、隔离性和持久性</strong>.<br>&emsp;事务处理包括数据库恢复和并发控制.数据库恢复有两个目的:保证事务的原子性和使数据库能恢复到正确状态.</p>
+<hr>
+<h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="三大数据类型"><a href="#三大数据类型" class="headerlink" title="三大数据类型"></a>三大数据类型</h3><h4 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h4><ul>
 <li>整数: tinyint、smallint、mediumint、int、bigint</li>
 <li>浮点数: float、double、real、decimal</li>
 </ul>
-<h3 id="日期和时间"><a href="#日期和时间" class="headerlink" title="日期和时间"></a>日期和时间</h3><p>&emsp;&ensp;date、time、datetime、timestamp、year</p>
-<h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><ul>
+<h4 id="日期和时间"><a href="#日期和时间" class="headerlink" title="日期和时间"></a>日期和时间</h4><p>&emsp;&ensp;date、time、datetime、timestamp、year</p>
+<h4 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h4><ul>
 <li>字符串: char、varchar</li>
 <li>文本: tinytext、text、mediumtext、longtext</li>
 <li>二进制: tinyblob、blob、mediumblob、longblob</li>
 </ul>
-<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><ul>
+<h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><ul>
 <li>SQL指结构化查询语言</li>
 <li>SQL使我们有能力访问数据库</li>
 <li>SQL是一种ANSI的标准计算机语言</li>
 </ul>
-<h2 id="SQL语法"><a href="#SQL语法" class="headerlink" title="SQL语法"></a>SQL语法</h2><p><strong>注:SQL对大小写不敏感!!!</strong></p>
-<h3 id="DML-数据操作语言"><a href="#DML-数据操作语言" class="headerlink" title="DML(数据操作语言)"></a>DML(数据操作语言)</h3><p>&emsp;&ensp;查询和更新指令</p>
+<h3 id="SQL语法"><a href="#SQL语法" class="headerlink" title="SQL语法"></a>SQL语法</h3><p><strong>注:SQL对大小写不敏感!!!</strong></p>
+<h4 id="DML-数据操作语言"><a href="#DML-数据操作语言" class="headerlink" title="DML(数据操作语言)"></a>DML(数据操作语言)</h4><p>&emsp;&ensp;查询和更新指令</p>
 <ul>
 <li>SELECT-从数据库表中获取数据</li>
 <li>UPDATE-更新数据库表中的数据</li>
 <li>DELETE-从数据库表中删除数据</li>
 <li>INSERT INTO-从数据库表中插入数据</li>
 </ul>
-<h3 id="DDL-数据定义语言"><a href="#DDL-数据定义语言" class="headerlink" title="DDL(数据定义语言)"></a>DDL(数据定义语言)</h3><p>&emsp;&ensp;创建和删除指令</p>
+<h4 id="DDL-数据定义语言"><a href="#DDL-数据定义语言" class="headerlink" title="DDL(数据定义语言)"></a>DDL(数据定义语言)</h4><p>&emsp;&ensp;创建和删除指令</p>
 <ul>
 <li>CREATE DATABASE-创建新数据库</li>
 <li>ALTER DATABASE-修改数据库</li>
@@ -194,8 +248,8 @@
 <li>CREATE INDEX-创建索引(搜索键)</li>
 <li>DROP INDEX-删除索引</li>
 </ul>
-<h2 id="SQL语句"><a href="#SQL语句" class="headerlink" title="SQL语句"></a>SQL语句</h2><hr>
-<h3 id="SELECT语句"><a href="#SELECT语句" class="headerlink" title="SELECT语句"></a>SELECT语句</h3><p>&emsp;&ensp;用于从表中选取数据.星号(<code>*</code>)是选取所有列的快捷方式.</p>
+<h3 id="SQL语句"><a href="#SQL语句" class="headerlink" title="SQL语句"></a>SQL语句</h3><hr>
+<h4 id="SELECT语句"><a href="#SELECT语句" class="headerlink" title="SELECT语句"></a>SELECT语句</h4><p>&emsp;&ensp;用于从表中选取数据.星号(<code>*</code>)是选取所有列的快捷方式.</p>
 <pre><code class="sql">    SELECT 列名称 FROM 表名称
     SELECT * FROM 表名称
 </code></pre>
@@ -259,7 +313,7 @@
 </tbody>
 </table>
 <hr>
-<h3 id="DISTINCT语句"><a href="#DISTINCT语句" class="headerlink" title="DISTINCT语句"></a>DISTINCT语句</h3><p>&emsp;&ensp;用于列出不同的值.</p>
+<h4 id="DISTINCT语句"><a href="#DISTINCT语句" class="headerlink" title="DISTINCT语句"></a>DISTINCT语句</h4><p>&emsp;&ensp;用于列出不同的值.</p>
 <pre><code class="sql">    SELECT DISTINCT 列名称 FROM 表名称
 </code></pre>
 <p>&emsp;<em>Text:</em> Orders表</p>
@@ -333,7 +387,7 @@
 </tbody>
 </table>
 <hr>
-<h3 id="WHERE语句"><a href="#WHERE语句" class="headerlink" title="WHERE语句"></a>WHERE语句</h3><p>&emsp;如需有条件地从表中选取数据,可将 WHERE 子句添加到 SELECT 语句.</p>
+<h4 id="WHERE语句"><a href="#WHERE语句" class="headerlink" title="WHERE语句"></a>WHERE语句</h4><p>&emsp;如需有条件地从表中选取数据,可将 WHERE 子句添加到 SELECT 语句.</p>
 <pre><code class="sql">    SELECT 列名称 FROM 表名称 WHERE 列 运算符 值
 </code></pre>
 <table>
@@ -454,7 +508,7 @@
 </tbody>
 </table>
 <hr>
-<h3 id="LIKE操作符"><a href="#LIKE操作符" class="headerlink" title="LIKE操作符"></a>LIKE操作符</h3><p>&emsp;LIKE 操作符用于在 WHERE 子句中搜索列中的指定模式.</p>
+<h4 id="LIKE操作符"><a href="#LIKE操作符" class="headerlink" title="LIKE操作符"></a>LIKE操作符</h4><p>&emsp;LIKE 操作符用于在 WHERE 子句中搜索列中的指定模式.</p>
 <pre><code class="sql">    SELECT column_name(s)
     FROM table_name
     WHERE column_name LIKE pattern
@@ -598,7 +652,7 @@
 </tbody>
 </table>
 <hr>
-<h3 id="BETWEEN操作符"><a href="#BETWEEN操作符" class="headerlink" title="BETWEEN操作符"></a>BETWEEN操作符</h3><p>&emsp;在WHERE子句中使用,作用是选取介于两个值之间的数据范围.</p>
+<h4 id="BETWEEN操作符"><a href="#BETWEEN操作符" class="headerlink" title="BETWEEN操作符"></a>BETWEEN操作符</h4><p>&emsp;在WHERE子句中使用,作用是选取介于两个值之间的数据范围.</p>
 <pre><code class="sql">    SELECT column_name(s)
     FROM table_name
     WHERE column_name
@@ -679,10 +733,10 @@
 </tbody>
 </table>
 <hr>
-<h2 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h2><p>&emsp;StringBuilder是一个可变的字符序列.<br>&emsp;StringBuilder使用</p>
+<h3 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h3><p>&emsp;StringBuilder是一个可变的字符序列.<br>&emsp;StringBuilder使用</p>
 <pre><code class="sql">    StringBuilder strSql = new StringBuilder();
 </code></pre>
-<h3 id="常用方法-Append"><a href="#常用方法-Append" class="headerlink" title="常用方法(Append)"></a>常用方法(Append)</h3><p>&emsp;Append方法：将文本或对象的字符串表示形式添加到由当前StringBuilder对象表示的字符串的结尾处.</p>
+<h4 id="常用方法-Append"><a href="#常用方法-Append" class="headerlink" title="常用方法(Append)"></a>常用方法(Append)</h4><p>&emsp;Append方法：将文本或对象的字符串表示形式添加到由当前StringBuilder对象表示的字符串的结尾处.</p>
 
             <hr>
           </div>
@@ -889,7 +943,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "SQL学习笔记(一)————基础语法&nbsp;",
+        "SQL学习笔记&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

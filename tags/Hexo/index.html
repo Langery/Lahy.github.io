@@ -14,7 +14,7 @@
   <meta name="description" content="Jump out of the comfort zone">
   <meta name="author" content="Langery">
   <meta name="keywords" content="">
-  <title>Hexo优化笔记 ~ Langery Stone&#39;s Blog</title>
+  <title>标签 - Hexo ~ Langery Stone&#39;s Blog</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
@@ -35,7 +35,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 80vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -95,7 +95,7 @@
 </nav>
 
     <div class="view intro-2" id="background"
-         style="background: url('/img/default.png')no-repeat center center;
+         style="background: url('/img/sea.jpg')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -105,41 +105,6 @@
               
             </span>
 
-            
-              <br>
-              
-                <p class="mt-3">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期二, 一月 22日 2019, 7:24 晚上
-                </p>
-              
-
-              <p>
-                
-                  
-                  &nbsp;<i class="far fa-chart-bar"></i>
-                  <span class="post-count">
-                    194 字
-                  </span>&nbsp;
-                
-
-                
-                  
-                  &nbsp;<i class="far fa-clock"></i>
-                  <span class="post-count">
-                      1 分钟
-                  </span>&nbsp;
-                
-
-                
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
-                  <span id="busuanzi_container_page_pv">
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>&nbsp;
-                
-              </p>
             
           </div>
 
@@ -151,134 +116,45 @@
 
   <main>
     
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="list-group">
+<!--  <p class="h4">共计 2 篇文章</p>-->
+  <hr>
+  
+    
       
+      <p class="h5">2018</p>
+    
+    <a href="/2018/11/09/text-to-UpImg/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">Hexo - 图片上传行不行？？</span>
+      <span style="float: right;">11-09</span>
+    </a>
+  
+    
+      
+      <p class="h5">2017</p>
+    
+    <a href="/2017/10/21/Hexo/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">Hexo随笔(不定时更新)</span>
+      <span style="float: right;">10-21</span>
+    </a>
+  
+</div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          <div class="markdown-body">
-            <p><strong>关于Hexo优化问题汇总</strong><br><a id="more"></a></p>
-<hr>
-<h2 id="修改Hexo样式"><a href="#修改Hexo样式" class="headerlink" title="修改Hexo样式"></a>修改Hexo样式</h2><p>&emsp;从主题文件夹下找到 <code>\themes\next\source\css\_custom\custom.styl</code> ，初始内容如下:</p>
-<pre><code class="javascript">  // Custom styles.
-  .post {
-    margin-top: 60px;
-    margin-bottom: 60px;
-    padding: 25px;
-    -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
-    -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
-  }
-</code></pre>
-<h2 id="显示当前浏览进度"><a href="#显示当前浏览进度" class="headerlink" title="显示当前浏览进度"></a>显示当前浏览进度</h2><p>&emsp;修改 <code>themes/*/_config.yml</code></p>
-<pre><code class="yml"># Back to top in sidebar
-b2t: true
 
-# Scroll percent label in b2t button
-scrollpercent: true
-</code></pre>
-<h2 id="增加背景图片"><a href="#增加背景图片" class="headerlink" title="增加背景图片"></a>增加背景图片</h2><p>&emsp;打开 <code>themes/*/source/css/_custom/custom.styl</code> ，添加代码：</p>
-<pre><code class="css">body{
-  background: url(/images/bg.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-}
-</code></pre>
-<p>&emsp;图片来源：</p>
-<pre><code class="javascript">  https://source.unsplash.com
-</code></pre>
-<h2 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h2><ol>
-<li><a href="https://leaferx.online/2018/02/11/lc-security/" target="_blank" rel="noopener">Leancloud访客统计插件重大安全漏洞修复指南</a></li>
-<li><a href="https://leflacon.github.io/52b56662/" target="_blank" rel="noopener">文章阅读次数显示：Counter not initialized! See more at consoleerr msg的解决办法</a></li>
-<li><a href="https://leafjame.github.io/posts/554801533.html" target="_blank" rel="noopener">NexT主题之LeanCloud切换国际版</a></li>
-</ol>
 
-            <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
-                
-                  <a class="hover-with-bg" href="/categories/%E7%AC%94%E8%AE%B0">笔记</a>
-                  &nbsp;
-                
-              </span>&nbsp;&nbsp;
-            
-            
-              <span>
-                <i class="iconfont icon-tag"></i>
-                
-                  <a class="hover-with-bg" href="/tags/Informal%20essay">Informal essay</a>
-                
-              </span>
-            
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="d-none d-lg-block col-lg-2 toc-container">
-      
-  <div id="toc">
-    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
-    <div id="tocbot"></div>
-  </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-      <br><br>
-      
-      
-  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-  <script>
-    var notify = 'false' === true;
-    var verify = 'false' === true;
-    var oldLoad = window.onload;
-    window.onload = function () {
-      new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
-        app_id: "AxIq9Cd88xSTWvFzURj7xWiz-MdYXbMMI",
-        app_key: "sDl2xm0ukXjRsVbIl4wN2ruM",
-        placeholder: "Just go go",
-        avatar: "retro",
-        meta: ['nick', 'mail', 'link'],
-        pageSize: "10",
-      });
-      oldLoad && oldLoad();
-    };
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" rel="nofollow noopener">comments
-      powered by Valine.</a></noscript>
-
-
-    
-  </div>
-</div>
-
     
   </main>
 
@@ -353,11 +229,6 @@ scrollpercent: true
 
 
 
-  
-    <script src="/lib/tocbot/tocbot.min.js" ></script>
-  
-  <script src="/js/post.js" ></script>
-
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -398,7 +269,7 @@ scrollpercent: true
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Hexo优化笔记&nbsp;",
+        "标签 - Hexo&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
