@@ -14,7 +14,7 @@
   <meta name="description" content="Jump out of the comfort zone">
   <meta name="author" content="Langery">
   <meta name="keywords" content="">
-  <title>标签 - Informal essay ~ Langery Stone&#39;s Blog</title>
+  <title>标签 - Informal Essay ~ Langery Stone&#39;s Blog</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
@@ -125,52 +125,46 @@
                 
 
 <div class="list-group">
-<!--  <p class="h4">共计 6 篇文章</p>-->
+<!--  <p class="h4">共计 5 篇文章</p>-->
   <hr>
   
     
       
       <p class="h5">2019</p>
     
-    <a href="/2019/01/31/weChat/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">微信小程序笔记</span>
-      <span style="float: right;">01-31</span>
+    <a href="/2019/09/28/reflect/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">关于最近的一些反思</span>
+      <span style="float: right;">09-28</span>
     </a>
   
     
       
       <p class="h5">2018</p>
     
-    <a href="/2018/03/31/angular/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Angular学习笔记整理</span>
-      <span style="float: right;">03-31</span>
+    <a href="/2018/12/09/Architectural-Notes01/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">建筑笔记</span>
+      <span style="float: right;">12-09</span>
+    </a>
+  
+    
+    <a href="/2018/08/27/happy/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">Hexo由回归啦啦啦~~~</span>
+      <span style="float: right;">08-27</span>
     </a>
   
     
       
       <p class="h5">2017</p>
     
-    <a href="/2017/12/13/Ajax/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Ajax数据交互问题整理</span>
-      <span style="float: right;">12-13</span>
-    </a>
-  
-    
-    <a href="/2017/11/29/React/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">React学习笔记整理</span>
+    <a href="/2017/11/29/SQL/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">SQL学习笔记</span>
       <span style="float: right;">11-29</span>
     </a>
   
     
-    <a href="/2017/11/16/Vue搭建/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Vue环境搭建</span>
-      <span style="float: right;">11-16</span>
-    </a>
-  
-    
-    <a href="/2017/10/21/Hexo/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Hexo随笔(不定时更新)</span>
-      <span style="float: right;">10-21</span>
+    <a href="/2017/11/22/JavaScript/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">JavaScript笔记整理</span>
+      <span style="float: right;">11-22</span>
     </a>
   
 </div>
@@ -296,7 +290,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签 - Informal essay&nbsp;",
+        "标签 - Informal Essay&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
@@ -345,6 +339,22 @@
     $("#post img:not(.no-zoom img, img[no-zoom])").each(
       function () {
         var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>
+cument.createElement("a");
         $(element).attr("data-fancybox", "images");
         $(element).attr("href", $(this).attr("src"));
         $(this).wrap(element);
