@@ -119,7 +119,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    892 字
+                    1k 字
                   </span>&nbsp;
                 
 
@@ -127,7 +127,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      3 分钟
+                      4 分钟
                   </span>&nbsp;
                 
 
@@ -253,6 +253,13 @@ export default {
 }
 &lt;/script&gt;
 </code></pre>
+<p>&emsp;分类：</p>
+<ul>
+<li>reactive</li>
+<li>shallowReactive</li>
+<li>readonly</li>
+<li>shallowReadonly</li>
+</ul>
 <blockquote>
 <p>toRef 函数与 toRefs 函数</p>
 </blockquote>
@@ -303,7 +310,7 @@ export default{
 }
 &lt;/script&gt;
 </code></pre>
-<h4 id="指令与插槽"><a href="#指令与插槽" class="headerlink" title="指令与插槽"></a>指令与插槽</h4><h4 id="diff-算法"><a href="#diff-算法" class="headerlink" title="diff 算法"></a>diff 算法</h4><h4 id="工厂函数"><a href="#工厂函数" class="headerlink" title="工厂函数"></a>工厂函数</h4><h4 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h4><p>&emsp;元编程，即对编程语言进行编程。<br>&emsp;支持拦截。<br>&emsp;<del>简单来说定义Proxy的输入值，如果存在可以获取到对应的对象属性，若没有则返回失败，但是我们可以自由定义Proxy获取到的对象的子集，通过定义的函数类型也可以将说去的内容进行加载或做其他的处理，但是处理方式均需要在<code>get</code>中进行方法的定义。</del></p>
+<h4 id="Effect"><a href="#Effect" class="headerlink" title="Effect"></a>Effect</h4><h4 id="指令与插槽"><a href="#指令与插槽" class="headerlink" title="指令与插槽"></a>指令与插槽</h4><h4 id="diff-算法"><a href="#diff-算法" class="headerlink" title="diff 算法"></a>diff 算法</h4><h4 id="工厂函数"><a href="#工厂函数" class="headerlink" title="工厂函数"></a>工厂函数</h4><h4 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h4><p>&emsp;元编程，即对编程语言进行编程。<br>&emsp;支持拦截。<br>&emsp;<del>简单来说定义Proxy的输入值，如果存在可以获取到对应的对象属性，若没有则返回失败，但是我们可以自由定义Proxy获取到的对象的子集，通过定义的函数类型也可以将说去的内容进行加载或做其他的处理，但是处理方式均需要在<code>get</code>中进行方法的定义。</del></p>
 <pre><code class="javascript">var obj = new Proxy({}, {
   get: function(target, propKey, receiver){
     console.log(`getting ${propKey}!`);
@@ -318,6 +325,36 @@ export default{
 <blockquote>
 <p>get()</p>
 </blockquote>
+<p>&emsp;接受三个参数：目标对象、属性名、proxy实例本身[ 可选参数 ]</p>
+<pre><code class="javascript">// Demo1 拦截读取操作
+var person = {
+  name: &#39;nike&#39;
+}
+
+var proxy = new Proxy(person, {
+  get: function(target, propKey){
+    if (propKey in target) {
+      return target[propKey]
+    } else {
+      throw new ReferenceError(&#39;&#39;)
+    }
+  }
+})
+
+proxy.name // &#39;nike&#39;
+proxy.age // error
+</code></pre>
+<pre><code class="javascript">// Demo2 继承
+let proto = new Proxy({}, {
+  get(target, propertyKey, receiver){
+    console.log(&#39;GET &#39; + propertyKey);
+    return target[propertyKey]
+  }
+})
+let obj = Object.create(proto);
+obj.foo // &quot;GET foo&quot;
+obj.hahah // &quot;GET hahah&quot;
+</code></pre>
 <blockquote>
 <p>set()</p>
 </blockquote>
