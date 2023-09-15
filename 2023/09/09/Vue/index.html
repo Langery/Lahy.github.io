@@ -295,7 +295,21 @@ export default{
 }
 &lt;/script&gt;
 </code></pre>
-<h3 id="Effect"><a href="#Effect" class="headerlink" title="Effect"></a>Effect</h3><h3 id="指令与插槽"><a href="#指令与插槽" class="headerlink" title="指令与插槽"></a>指令与插槽</h3><h3 id="diff-算法"><a href="#diff-算法" class="headerlink" title="diff 算法"></a>diff 算法</h3><h3 id="工厂函数"><a href="#工厂函数" class="headerlink" title="工厂函数"></a>工厂函数</h3><h3 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h3><p>&emsp;元编程，即对编程语言进行编程。<br>&emsp;支持拦截。<br>&emsp;<del>简单来说定义Proxy的输入值，如果存在可以获取到对应的对象属性，若没有则返回失败，但是我们可以自由定义Proxy获取到的对象的子集，通过定义的函数类型也可以将说去的内容进行加载或做其他的处理，但是处理方式均需要在<code>get</code>中进行方法的定义。</del></p>
+<h3 id="Effect"><a href="#Effect" class="headerlink" title="Effect"></a>Effect</h3><pre><code class="javascript">export function effect&lt;T = any&gt;(
+  fn: () =&gt; T,
+  options: ReactiveEffectOptions = EMPTY_OBJ
+): ReactiveEffect&lt;T&gt; {
+  if (isEffect(fn)) {
+    fn = fn.raw
+  }
+  const effect = createReactiveEffect(fn, options)
+  if (!options.lazy) {
+    effect()
+  }
+  return effect
+}
+</code></pre>
+<h3 id="指令与插槽"><a href="#指令与插槽" class="headerlink" title="指令与插槽"></a>指令与插槽</h3><h3 id="diff-算法"><a href="#diff-算法" class="headerlink" title="diff 算法"></a>diff 算法</h3><h3 id="工厂函数"><a href="#工厂函数" class="headerlink" title="工厂函数"></a>工厂函数</h3><h3 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h3><p>&emsp;元编程，即对编程语言进行编程。<br>&emsp;支持拦截。<br>&emsp;<del>简单来说定义Proxy的输入值，如果存在可以获取到对应的对象属性，若没有则返回失败，但是我们可以自由定义Proxy获取到的对象的子集，通过定义的函数类型也可以将说去的内容进行加载或做其他的处理，但是处理方式均需要在<code>get</code>中进行方法的定义。</del></p>
 <pre><code class="javascript">var obj = new Proxy({}, {
   get: function(target, propKey, receiver){
     console.log(`getting ${propKey}!`);
