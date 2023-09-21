@@ -323,11 +323,11 @@
       <category term="Testing" scheme="https://Langery-stone.github.io/categories/Testing/"/>
     
     
-      <category term="Hexo" scheme="https://Langery-stone.github.io/tags/Hexo/"/>
-    
       <category term="Testing" scheme="https://Langery-stone.github.io/tags/Testing/"/>
     
       <category term="Another Tag" scheme="https://Langery-stone.github.io/tags/Another-Tag/"/>
+    
+      <category term="Hexo" scheme="https://Langery-stone.github.io/tags/Hexo/"/>
     
   </entry>
   
