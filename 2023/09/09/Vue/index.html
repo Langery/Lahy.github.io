@@ -509,7 +509,7 @@ proxy(1,2) // 6
 proxy.call(null, 5, 6) // 22
 proxy(null, [7, 8]) // 30
 </code></pre>
-<h4 id="has"><a href="#has" class="headerlink" title="has()"></a>has()</h4><p>&emsp;用于拦截 hasProperty 操作；<br>&emsp;此方法用于接受两个参数，分别是目标属性（target）、需查询的属性名（key）。</p>
+<h4 id="has"><a href="#has" class="headerlink" title="has()"></a>has()</h4><p>&emsp;用于拦截 hasProperty 操作，而不是 <a href="#hasOwnProperty">HasOwnProperty</a> 操作；has 方法不判断一个属性是对象自身属性还是继承属性；<br>&emsp;此方法用于接受两个参数，分别是目标属性（target）、需查询的属性名（key）。</p>
 <pre><code class="javascript">var handler = {
   has (target, key) {
     if (key[0] === &#39;_&#39;) {
@@ -522,7 +522,14 @@ var target = { _prop: &#39;foo&#39;, prop: &#39;foo&#39; };
 var proxy = new Proxy(target, handler);
 &#39;_prop&#39; in proxy; // false
 </code></pre>
-<h4 id="construct"><a href="#construct" class="headerlink" title="construct()"></a>construct()</h4><h4 id="deleteProperty"><a href="#deleteProperty" class="headerlink" title="deleteProperty()"></a>deleteProperty()</h4><h4 id="defineProperty"><a href="#defineProperty" class="headerlink" title="defineProperty()"></a>defineProperty()</h4><h4 id="getOwnPropertyDescriptor"><a href="#getOwnPropertyDescriptor" class="headerlink" title="getOwnPropertyDescriptor()"></a>getOwnPropertyDescriptor()</h4><h4 id="getPrototypeOf"><a href="#getPrototypeOf" class="headerlink" title="getPrototypeOf()"></a>getPrototypeOf()</h4><h4 id="isExtensible"><a href="#isExtensible" class="headerlink" title="isExtensible()"></a>isExtensible()</h4><h4 id="ownKeys"><a href="#ownKeys" class="headerlink" title="ownKeys()"></a>ownKeys()</h4><h4 id="preventExtensions"><a href="#preventExtensions" class="headerlink" title="preventExtensions()"></a>preventExtensions()</h4><h4 id="setPrototypeOf"><a href="#setPrototypeOf" class="headerlink" title="setPrototypeOf()"></a>setPrototypeOf()</h4><h4 id="Proxy-revocable"><a href="#Proxy-revocable" class="headerlink" title="Proxy.revocable()"></a>Proxy.revocable()</h4><h1 id="补充概念"><a href="#补充概念" class="headerlink" title="补充概念"></a>补充概念</h1><h2 id="Object-defineProperties"><a href="#Object-defineProperties" class="headerlink" title="Object.defineProperties"></a><a id="defineProp">Object.defineProperties</a></h2><pre><code class="javascript">Object.defineProperties(obj, props);
+<p>&emsp;has 拦截对 for…in 循环不生效；</p>
+<h4 id="construct"><a href="#construct" class="headerlink" title="construct()"></a>construct()</h4><p>&emsp;用于拦截 new 命令；<br>&emsp;可接受三个参数；</p>
+<ul>
+<li>target：目标函数</li>
+<li>args：构建函数参数数组</li>
+<li>newTarget：创造实例对象时，new 命令的构造函数</li>
+</ul>
+<h4 id="deleteProperty"><a href="#deleteProperty" class="headerlink" title="deleteProperty()"></a>deleteProperty()</h4><h4 id="defineProperty"><a href="#defineProperty" class="headerlink" title="defineProperty()"></a>defineProperty()</h4><h4 id="getOwnPropertyDescriptor"><a href="#getOwnPropertyDescriptor" class="headerlink" title="getOwnPropertyDescriptor()"></a>getOwnPropertyDescriptor()</h4><h4 id="getPrototypeOf"><a href="#getPrototypeOf" class="headerlink" title="getPrototypeOf()"></a>getPrototypeOf()</h4><h4 id="isExtensible"><a href="#isExtensible" class="headerlink" title="isExtensible()"></a>isExtensible()</h4><h4 id="ownKeys"><a href="#ownKeys" class="headerlink" title="ownKeys()"></a>ownKeys()</h4><h4 id="preventExtensions"><a href="#preventExtensions" class="headerlink" title="preventExtensions()"></a>preventExtensions()</h4><h4 id="setPrototypeOf"><a href="#setPrototypeOf" class="headerlink" title="setPrototypeOf()"></a>setPrototypeOf()</h4><h4 id="Proxy-revocable"><a href="#Proxy-revocable" class="headerlink" title="Proxy.revocable()"></a>Proxy.revocable()</h4><h1 id="补充概念"><a href="#补充概念" class="headerlink" title="补充概念"></a>补充概念</h1><h2 id="Object-defineProperties"><a href="#Object-defineProperties" class="headerlink" title="Object.defineProperties"></a><a id="defineProp">Object.defineProperties</a></h2><pre><code class="javascript">Object.defineProperties(obj, props);
 </code></pre>
 <p>&emsp;obj 为定义属性的对象，props 是一个属性描述符对象<br>&emsp;属性描述符属性：</p>
 <ul>
