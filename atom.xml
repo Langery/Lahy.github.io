@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://Langery-stone.github.io/"/>
-  <updated>2023-11-22T14:40:06.402Z</updated>
+  <updated>2024-10-24T13:00:34.141Z</updated>
   <id>https://Langery-stone.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>教学档案</title>
+    <link href="https://Langery-stone.github.io/2024/10/24/%E6%95%99%E5%AD%A6%E6%A1%A3%E6%A1%88/"/>
+    <id>https://Langery-stone.github.io/2024/10/24/教学档案/</id>
+    <published>2024-10-24T12:47:18.000Z</published>
+    <updated>2024-10-24T13:00:34.141Z</updated>
+    
+    <content type="html"><![CDATA[<p>&emsp;&emsp;在最近的教学过程中发现了一些有趣的内容，现将这些内容做具体的更新和汇总便于后续的记录和学习使用。<br><a id="more"></a></p><hr><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="大同小异"><a href="#大同小异" class="headerlink" title="大同小异"></a>大同小异</h3><p>&emsp;&emsp;在计算机学科中，存在很多的大同小异，我们当前只讨论大同，将里面的概念做统一描述。</p><h3 id="父子级"><a href="#父子级" class="headerlink" title="父子级"></a>父子级</h3><p>&emsp;&emsp;首先最重要的一个概念我们称之为<code>继承性</code>，在父子级中需要考虑到子级与父级之间的信息继承，实现数据的获取和管理。</p><blockquote><p>深拷贝 &amp;浅拷贝</p></blockquote><ol><li>浅拷贝：只是将数据的内容获取</li><li>深拷贝：将数据内容的底层函数进行拷贝，实现数据的获取和继承</li></ol><p>&emsp;&emsp;不管是深拷贝还是浅拷贝都对原数据不做修改，只是对新的数据的内容的深度进行不同程度的获取。</p><h3 id="污染问题"><a href="#污染问题" class="headerlink" title="污染问题"></a>污染问题</h3><blockquote><p>代码污染</p></blockquote><p>&emsp;&emsp;主要包含两点：可读性、规范性<br>&emsp;&emsp;可读性即当前代码给到其他开发成员的时候可以清楚理解代码所要执行的相关内容，在后续的二次开发的时候可以更快速的进行开发。<br>&emsp;&emsp;规范性是指每种开发语言都有一定的规则，我们要遵循相关的规则进行代码的开发，避免出现太多的错误问题。</p><blockquote><p>数据污染</p></blockquote><p>&emsp;&emsp;避免在一组数据中出现很多不同种类的数据信息，避免在后续的开发中处理太多的数据问题。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;emsp;&amp;emsp;在最近的教学过程中发现了一些有趣的内容，现将这些内容做具体的更新和汇总便于后续的记录和学习使用。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://Langery-stone.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Note" scheme="https://Langery-stone.github.io/tags/Note/"/>
+    
+  </entry>
   
   <entry>
     <title>Vue 学习汇总</title>
